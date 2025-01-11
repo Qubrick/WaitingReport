@@ -50,6 +50,13 @@ token = 'TOKEN'
 proposals_repo = 'godotengine/godot-proposals'
 issues_repo = 'godotengine/godot'
 
+count_day = (datetime.today().replace(hour=0, minute=0, second=0, microsecond=0) - datetime(2024, 8, 16)).days
+
+header = '**Day ' + str(count_day - 11)  + '** :gdcute: \n'
+header += '(' + str(count_day) + ' days from the beginning of 4.4)\n' 
+header += 'Waiting for **Godot 4.4 Beta**\n'
+header += '\n__**What update on 4.x today ?**__\n'
+
 footer = '\nFor daily merged pull requests, visit [Github Pulse](<https://github.com/godotengine/godot/pulse/daily>).\n'
 # footer += 'For release blockers, visit [4.x Release Blockers](<https://github.com/orgs/godotengine/projects/61>).\n'
 footer += 'My Waiting History: 4.4 (dev 11 days), 4.3 (259 days), 4.2 (147 days), 4.1 (128 days), 4.0 (512 days)\n\nSincerely, ' + username + '.'
@@ -214,15 +221,10 @@ def get_milestones_report(repo : str, header : str, title : str, filter : str = 
     return tmp  
 
 #--------------------------------------------------------------------------
-
-# Start Date
-count_day = (datetime.today().replace(hour=0, minute=0, second=0, microsecond=0) - datetime(2024, 8, 16)).days
-
-# Progress Report
-text = '**Day ' + str(count_day - 11)  + '** :gdcute: \n'
-text += '(' + str(count_day) + ' days from the beginning of 4.4)\n' 
-text += 'Waiting for **Godot 4.4 Beta**\n'
-text += '\n__**What update on 4.x today ?**__\n'
+# Write Report
+#--------------------------------------------------------------------------
+# Header
+text = header
 
 # Proposals
 text += get_milestones_report(proposals_repo, 'Proposals', 'Proposal')
@@ -230,7 +232,7 @@ text += get_milestones_report(proposals_repo, 'Proposals', 'Proposal')
 # Issues
 text += get_milestones_report(issues_repo, 'Milestones', 'Issue')
 
-# End
+# Footer
 text += footer
 
 # Write Report
