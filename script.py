@@ -52,14 +52,14 @@ issues_repo = 'godotengine/godot'
 
 count_day = (datetime.today().replace(hour=0, minute=0, second=0, microsecond=0) - datetime(2024, 8, 16)).days
 
-header = '**Day ' + str(count_day - 11)  + '** :gdcute: \n'
+header = '**Day ' + str(count_day - 11 - 142)  + '** :gdcute: \n'
 header += '(' + str(count_day) + ' days from the beginning of 4.4)\n' 
-header += 'Waiting for **Godot 4.4 Beta**\n'
+header += 'Waiting for **Godot 4.4 RC**\n'
 header += '\n__**What update on 4.x today ?**__\n'
 
 footer = '\nFor daily merged pull requests, visit [Github Pulse](<https://github.com/godotengine/godot/pulse/daily>).\n'
 # footer += 'For release blockers, visit [4.x Release Blockers](<https://github.com/orgs/godotengine/projects/61>).\n'
-footer += 'My Waiting History: 4.4 (dev 11 days), 4.3 (259 days), 4.2 (147 days), 4.1 (128 days), 4.0 (512 days)\n\nSincerely, ' + username + '.'
+footer += 'My Waiting History: 4.4 (beta 142 days, dev 11 days), 4.3 (259 days), 4.2 (147 days), 4.1 (128 days), 4.0 (512 days)\n\nSincerely, ' + username + '.'
 
 MAX_ISSUES = 100
 MAX_PAGES = 2
@@ -123,6 +123,8 @@ def get_issues_report(milestone : str, repo : str, type :str, title : str, timef
                             prefix = ':red_circle: [N]' 
                         if r == 'reopened':
                             prefix = ':green_circle: [R]'
+                        if r == 'duplicate':
+                            prefix = ':black_circle: [D]'
 
                     c = prefix + ' [#' + str(s["number"]) + '](<' + s["html_url"] + '>): ' + s["title"] + "\n"
                     approved = False
