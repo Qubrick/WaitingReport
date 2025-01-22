@@ -119,11 +119,11 @@ def get_issues_report(milestone : str, repo : str, type :str, title : str, timef
                     else:
                         if r == 'completed':
                             prefix = ':purple_circle: [C]' 
-                        if r == 'not_planned':
+                        elif r == 'not_planned':
                             prefix = ':red_circle: [N]' 
-                        if r == 'reopened':
+                        elif r == 'reopened':
                             prefix = ':green_circle: [R]'
-                        if r == 'duplicate':
+                        elif r == 'duplicate':
                             prefix = ':black_circle: [D]'
 
                     c = prefix + ' [#' + str(s["number"]) + '](<' + s["html_url"] + '>): ' + s["title"] + "\n"
